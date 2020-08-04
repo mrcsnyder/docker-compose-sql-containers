@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+
+  sqlserver2019:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: sql2019
+    ports:
+        - "8383:1433"
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=password
+      - MSSQL_PID=Developer
+    volumes:
+      - sqlserver-data:/var/opt/mssql
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10" 
+
+volumes:
+
+  sqlserver-data:

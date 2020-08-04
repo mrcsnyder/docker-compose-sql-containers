@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  postgresql:
+    image: postgres
+    container_name: pg-docker
+    ports:
+      - "5433:5432"
+    environment:
+      - POSTGRES_USER=mrcsnyder
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - ./postgres.conf:/etc/postgresql/postgresql.conf
+    command: postgres -c config_file=/etc/postgresql/postgresql.conf
+    restart: always
